@@ -1,0 +1,128 @@
+﻿<style>
+
+ 
+ /*.grid {
+  width: 1200px;
+  height: 450px;
+}
+
+.wrap {
+  white-space: normal;
+}
+
+.button{
+    color:black;
+}
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        background-color: red;
+        color: white;
+    }*/
+
+ .data-outer{
+    width: 1400px;
+     
+     
+ }
+
+ .data-outer .ui-grid-row{
+     display:table;
+     border-top: 1px solid #ddd !important;
+ }
+ .data-outer  .ng-isolate-scope{
+     /*display:table-row;*/
+ }
+.data-outer .ui-grid-cell {
+display: table-cell;
+/*height:initial;*/
+vertical-align: middle !important;
+}
+.data-outer .cell-data{
+    padding:10px;
+   /*min-height:150px;*/ 
+    font-size:13px;
+}
+
+</style>
+
+
+
+
+<div class="container" ng-show="searchDiv">
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            &nbsp;
+        </div>
+        <div class="col-sm-8">
+            <form role="form" name="myform">
+                <table class="table" border="0">
+                    <tr><td><h3>Search Jobs</h3></td></tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label for="q">q:</label>
+                                <input type="text" class="form-control" name="query" ng-model="query" id="q" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label for="t">title:</label>
+                                <input type="text" class="form-control" name="title" ng-model="title" id="t" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label for="s">skills:</label>
+                                <input type="text" class="form-control" name="skill" ng-model="skill" id="s" required>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <br>
+                                <button type="button" style="color:white;background-color:red;" class="btn btn-success btn-md form-control" ng-disabled="myform.query.$invalid && myform.title.$invalid && myform.skill.$invalid" ng-click="getDetails()">Search</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td ng-show="resultMessage">No Search Found!!</td></tr>
+                </table>
+                <table class="table" border="0">
+                    <tr>
+                        <td>
+                            <span style="text-decoration:underline;font-size:large;">Filter's:</span>&nbsp;&nbsp;<button type="button" class="btn btn-sm btn-success" ng-click="phpLongTermFilter()">Php Long Term</button>
+                            <button type="button" class="btn btn-sm btn-success" ng-click="dotNetLongTermFilter()">Dot Net Long Term</button>&nbsp;<button type="button" class="btn btn-sm btn-success" ng-click="phpFixedPriceFilter()">Php Fixed Price</button>&nbsp;<button type="button" class="btn btn-sm btn-success" ng-click="dotnetFixedPriceFilter()">Dot Net Fixed Price</button>
+                            &nbsp;<button type="button" class="btn btn-sm btn-success" ng-click="androidLongTermFilter()">Android Long Term</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                   <button type="button" class="btn btn-sm btn-success" ng-click="androidFixedPrice()">Android Fixed Price</button></td>
+                        </tr>
+
+                        <!--td><a href="" id="phpFixedPriceFilter">PhpFixedPrice</a>&nbsp;&nbsp;<a href="" id="dotnetFixedPriceFilter">DotNetFixedPrice</a></td-->
+
+          </table>
+
+</form>
+        </div>
+        <div class="col-sm-2">
+            &nbsp;
+        </div>
+
+    </div>
+</div>
+
+<div class="container" ng-show="searchResultDiv" >
+
+    <div class="row">
+        <div class="col-sm-1">
+            &nbsp;
+        </div>
+        <div class="col-sm-12">
+            <div ui-grid="gridOptions" class="grid data-outer " style="{{gridStyle}}" ui-grid-pagination ui-grid-auto-resize>
+
+            </div>s
+        </div>
+        <!--<div class="col-sm-3">
+            &nbsp;
+        </div>-->
+    </div>
+</div>
